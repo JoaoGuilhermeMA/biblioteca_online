@@ -1,5 +1,8 @@
 package br.com.joaoguilherme.biblioteca_online.categoria;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class CategoriaMapper {
     public CategoriaResponse toCategoriaResponse(Categoria Categoria) {
         return new CategoriaResponse(
