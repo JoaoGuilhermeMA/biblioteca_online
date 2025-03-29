@@ -13,4 +13,6 @@ public interface LivroRepository extends JpaRepository<Livro, Integer> {
     List<Livro> findByCategoriaId(Integer categoriaId);
 
     List<Livro> findByAnoPublicacao(Integer anoPublicacao);
+
+    boolean existsByIdAndQuantidadeDisponivelGreaterThan(Integer id, int quantidade);
 }

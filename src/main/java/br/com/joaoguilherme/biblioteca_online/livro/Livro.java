@@ -36,4 +36,7 @@ public class Livro {
 
     @NotNull(message = "O ano de publicação é obrigatório")
     private Integer anoPublicacao;
+
+    @NotNull(message = "A quantidade de livros é obrigatoria")
+    private Integer quantidadeDisponivel;
 }

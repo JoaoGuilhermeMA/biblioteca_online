@@ -21,6 +21,7 @@ public class LivroMapper {
                 livroRequest.titulo(),
                 autor,
                 categoria,
-                livroRequest.anoPublicacao());
+                livroRequest.anoPublicacao(),
+                livroRequest.quantidadeDisponivel());
     }
 }

@@ -88,4 +88,9 @@ public class LivroService {
                 .map(livroMapper::toLivroResponse)
                 .collect(Collectors.toList());
     }
+
+    public boolean temLivroDisponivel(Integer id) {
+
+        return livroRepository.existsByIdAndQuantidadeDisponivelGreaterThan(id, 0);
+    }
 }
