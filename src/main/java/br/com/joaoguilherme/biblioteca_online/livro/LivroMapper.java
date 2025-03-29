@@ -2,6 +2,9 @@ package br.com.joaoguilherme.biblioteca_online.livro;
 
 import br.com.joaoguilherme.biblioteca_online.autor.Autor;
 import br.com.joaoguilherme.biblioteca_online.categoria.Categoria;
+
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,7 +15,8 @@ public class LivroMapper {
                 livro.getTitulo(),
                 livro.getAutor().getNome(),
                 livro.getCategoria().getNome(),
-                livro.getAnoPublicacao());
+                livro.getAnoPublicacao(),
+                livro.getQuantidadeDisponivel());
     }
 
     public Livro toLivro(LivroRequest livroRequest, Autor autor, Categoria categoria) {
@@ -23,5 +27,15 @@ public class LivroMapper {
                 categoria,
                 livroRequest.anoPublicacao(),
                 livroRequest.quantidadeDisponivel());
+    }
+
+    public Livro toLivro(LivroResponse livroResponse, Autor autor, Categoria categoria) {
+        return new Livro(
+                null,
+                livroResponse.titulo(),
+                autor,
+                categoria,
+                livroResponse.anoPublicacao(),
+                livroResponse.quantidadeDisponivel());
     }
 }

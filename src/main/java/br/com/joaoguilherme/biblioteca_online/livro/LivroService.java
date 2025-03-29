@@ -1,6 +1,7 @@
 package br.com.joaoguilherme.biblioteca_online.livro;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,17 @@ public class LivroService {
     public boolean temLivroDisponivel(Integer id) {
 
         return livroRepository.existsByIdAndQuantidadeDisponivelGreaterThan(id, 0);
+    }
+
+    public boolean decrementarQuantidade(Integer livroId) {
+        if (!temLivroDisponivel(livroId)) {
+            throw new Error("Não tem livros disponiveis");
+        }
+        int linhasAfetadas = livroRepository.decrementarQuantidade(livroId);
+        return linhasAfetadas > 0;
+    }
+
+    public Optional<Livro> buscarLivroPorId(Integer id) {
+        return livroRepository.findById(id);
     }
 }
